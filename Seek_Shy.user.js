@@ -1,0 +1,38 @@
+// ==UserScript==
+// @name        Seek Shy 🔵
+// @namespace        http://tampermonkey.net/
+// @version        0.1
+// @description        ブログ記事に書込まれた特殊文字「&shy;」を明示する
+// @author        Ameba Blog User
+// @match        https://ameblo.jp/*
+// @icon        https://www.google.com/s2/favicons?sz=64&domain=ameblo.jp
+// @grant        none
+// @updateURL        https://github.com/personwritep/Seek_Shy/raw/main/Seek_Shy.user.js
+// @downloadURL        https://github.com/personwritep/Seek_Shy/raw/main/Seek_Shy.user.js
+// ==/UserScript==
+
+
+
+let body_doc=document.querySelector('#entryBody');
+
+if(body_doc){
+    let buffer=body_doc.innerHTML; // ハイライト表示のためソースコードを保存 🟦
+
+    let shy=/­/g;
+
+    let buffer_=buffer.replace(shy, '<span class="shy">­</span>');
+    // let buffer_=buffer.replace(shy, '▼');
+
+    console.log(buffer_);
+
+    body_doc.innerHTML=buffer_;
+
+    let style=
+        '<style class="shy">#entryBody .shy::before { content: "▼"; color: red; '+
+        'margin: 0 -0.5em; vertical-align: 8px; line-height: 0; }</style>';
+
+    if(!document.querySelector('style.shy')){
+        body_doc.insertAdjacentHTML('beforeend', style); }
+
+} // if(body_doc)
+
