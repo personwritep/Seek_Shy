@@ -20,19 +20,17 @@ if(body_doc){
 
     let shy=/­/g;
 
-    let buffer_=buffer.replace(shy, '<span class="shy">­</span>');
-    // let buffer_=buffer.replace(shy, '▼');
+    if( shy.test(buffer)){ // shyがヒットした時だけ bufferを書換える
 
-    console.log(buffer_);
+        let buffer_=buffer.replace(shy, '<span class="shy">­</span>');
+        body_doc.innerHTML=buffer_;
 
-    body_doc.innerHTML=buffer_;
+        let style=
+            '<style class="shy">#entryBody .shy::before { content: "▼"; color: red; '+
+            'margin: 0 -0.5em; vertical-align: 8px; line-height: 0; }</style>';
 
-    let style=
-        '<style class="shy">#entryBody .shy::before { content: "▼"; color: red; '+
-        'margin: 0 -0.5em; vertical-align: 8px; line-height: 0; }</style>';
+        if(!document.querySelector('style.shy')){
+            body_doc.insertAdjacentHTML('beforeend', style); }
 
-    if(!document.querySelector('style.shy')){
-        body_doc.insertAdjacentHTML('beforeend', style); }
-
-} // if(body_doc)
+    }} // if(body_doc)
 
