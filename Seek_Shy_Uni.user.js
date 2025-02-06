@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Seek Shy Uni 🔵 🔲
+// @name        Seek Shy Uni 🔵
 // @namespace        http://tampermonkey.net/
 // @version        0.2
 // @description        ネットの任意のページに書込まれた特殊文字「&shy;」を明示する
