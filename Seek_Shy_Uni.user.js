@@ -32,4 +32,3 @@ if(body_doc){
             body_doc.insertAdjacentHTML('beforeend', style); }
 
     }} // if(body_doc)
-
