@@ -1,10 +1,26 @@
 // ==UserScript==
-// @name        ZWSP Check TEST
+// @name        Seek Shy
 // @namespace        http://tampermonkey.net/
-// @version        0.0
-// @description        Code checking Tool about "zero width space"
-// @author        GitHub User
-// @match        https://github.com/*
-// @icon        https://www.google.com/s2/favicons?sz=64&domain=github.com
+// @version        0.1
+// @description        ブログ記事に書込まれた特殊文字「&shy;」を明示する
+// @author        Ameba Blog User
+// @match        https://ameblo.jp/*
+// @icon        https://www.google.com/s2/favicons?sz=64&domain=ameblo.jp
 // @grant        none
+// @updateURL        https://github.com/personwritep/Seek_Shy/raw/main/Seek_Shy.user.js
+// @downloadURL        https://github.com/personwritep/Seek_Shy/raw/main/Seek_Shy.user.js
 // ==/UserScript==
+
+
+
+let body_doc=document.querySelector('#entryBody');
+
+if(body_doc){
+    let buffer=body_doc.innerHTML; // ハイライト表示のためソースコードを保存 🟦
+
+    let shy=/­/g;
+
+    if( shy.test(buffer)){ // shyがヒットした時だけ bufferを書換える
+
+        let buffer_=buffer.replace(shy, '<span class="shy">­</span>');
+        body_doc.innerHTML=buffer_;
