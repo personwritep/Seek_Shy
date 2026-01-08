@@ -1,0 +1,10 @@
+// ==UserScript==
+// @name        ZWSP Check TEST
+// @namespace        http://tampermonkey.net/
+// @version        0.0
+// @description        Code checking Tool about "zero width space"
+// @author        GitHub User
+// @match        https://github.com/*
+// @icon        https://www.google.com/s2/favicons?sz=64&domain=github.com
+// @grant        none
+// ==/UserScript==
